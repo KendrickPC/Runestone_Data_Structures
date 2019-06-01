@@ -72,6 +72,18 @@ class Fraction:
         firstnum = self.num * other.den
         secondnum = other.num * self.den
         return firstnum == secondnum
+    
+    # Less than method from comparison operators.
+    def __lt__(self, other):
+        firstnum = self.num * other.den
+        secondnum = other.num * self.den
+        return firstnum < secondnum
+    
+    # Greater than method from comparison operators.
+    def __gt__(self, other):
+        firstnum = self.num * other.den
+        secondnum = other.num * self.den
+        return firstnum > secondnum
 
 x = Fraction(4,3)
 y = Fraction(2,6)
@@ -82,6 +94,9 @@ print(x + y)
 print(x - y)
 # Testing multiplication method.
 print(x * y)
-
 # Testing equality method.
 print(x == y)
+# Testing greater than 
+print(x < y)
+# Testing less than
+print(x > y)
