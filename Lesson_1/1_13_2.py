@@ -50,8 +50,6 @@ class BinaryGate(LogicGate):
                 print("Cannot Connect: NO EMPTY PINS on this gate")
 
 
-
-
 class AndGate(BinaryGate):
 
     def __init__(self, n):
@@ -139,10 +137,6 @@ def main():
     print(g4.getOutput())
 
 main()
-
-
-
-
 
 
 
