@@ -1,25 +1,112 @@
-# Python3 program to count distinct 
-# elements in a given array 
-def countDistinct(arr, n): 
+import time
+from matplotlib import pyplot as plt
+import random
 
-	res = 1
+def empty(*args):
+    pass
 
-	# Pick all elements one by one 
-	for i in range(1, n): 
-		j = 0
-		for j in range(i): 
-			if (arr[i] == arr[j]): 
-				break
+def list_index_operation(alist,index):
+    alist[index]
 
-		# If not printed earlier, then print it 
-		if (i == j + 1): 
-			res += 1
-	
-	return res 
 
-# Driver Code 
-arr = [12, 10, 9, 45, 2, 10, 10, 45] 
-n = len(arr) 
-print(countDistinct(arr, n)) 
+def dictionary_get_operation(adict, index):
+    adict.get(index)
 
-# This code is contributed by Mohit Kumar 
+def del_in_list(alist, index):
+    del alist[index]
+
+def del_in_dict(adict, key):
+    del adict[key]
+
+
+if __name__ == "__main__":
+
+    maxN = []
+    y1 = []
+    y2 = []
+    for i in range(1, 100000, 100):
+        maxN.append(i)
+
+###### Devise an experiment to verify that the list index operator is O(1) #######
+    for n in maxN:
+        alist = range(n)
+        random_index = random.randint(0, n-1)
+        start1 = time.time()
+        for repeat in range(100):
+            list_index_operation(alist, random_index)
+        end1 = time.time()
+    
+        start2 = time.time()
+        for repeat in range(100):
+            empty(alist, random_index)
+        end2 = time.time()
+    
+        y1.append(end1-start1-(end2-start2))
+    
+    plt.plot(maxN,y1)
+    plt.show()
+
+######## Devise an experiment to verify that get item and set item are O(1) for dictionaries.
+    # for n in maxN:
+    #     adict = {}
+    #     for j in xrange(n):
+    #         adict[j] = None
+    #
+    #     random_index = random.randint(0, n-1)
+    #     start1 = time.time()
+    #     for repeat in range(100):
+    #         dictionary_get_operation(adict, random_index)
+    #     end1 = time.time()
+    #
+    #     start2 = time.time()
+    #     for repeat in range(100):
+    #         empty(adict, random_index)
+    #     end2 = time.time()
+    #
+    #     y1.append(end1-start1-(end2-start2))
+    #
+    # plt.plot(maxN,y1)
+    # plt.show()
+
+######### Devise an experiment that compares the performance of the del operator on lists and dictionaries.
+    # for n in maxN:
+    #     alist = range(n)
+    #     adict = {}
+    #     for j in xrange(n):
+    #         adict[j] = None
+    #     random_index = random.randint(0, n-1)
+    #
+    #     start1 = time.time()
+    #     del_in_list(alist, random_index)
+    #     end1 = time.time()
+    #
+    #     start2 = time.time()
+    #     del_in_dict(adict, random_index)
+    #     end2 = time.time()
+    #
+    #     start3 = time.time()
+    #     empty(adict, random_index)
+    #     end3 = time.time()
+    #
+    #     y1.append(end1-start1-(end3-start3))
+    #     y2.append(end2-start2-(end3-start3))
+    #
+    # plt.plot(maxN,y1, "r--", maxN, y2)
+    # plt.show()
+
+#### Given a list of numbers in random order, write an algorithm that works in O(nlog(n))
+
+import heapq
+
+def getsmallest(arr, k):
+    m = [-x for x in l[:k]]
+    heapq.heapify(m)
+    for num in arr[5:]:
+        print(num, m)
+        heapq.heappush(m, max(-num, heapq.heappop(m)))
+    return m
+
+if __name__ == '__main__':
+    l = [1,2,3,52,2,3,1]
+    print(getsmallest(l, 5))
+#### to find the kth smallest number in the list.
