@@ -61,3 +61,23 @@ print(baseConverter(25, 2))
 print(baseConverter(25, 16))
 
 
+
+# Q-1: What is value of 25 expressed as an octal number?
+print("\nValue of 25 expressed as an octal:")
+print(baseConverter(25, 8))
+
+# Q-2: What is value of 256 expressed as a hexidecimal number?
+# Hexidecimal = 16
+print("\nValue of 256 expressed as a hexidecimal:")
+print(baseConverter(256, 16))
+
+# Q-3: What is value of 26 expressed in base 26?
+print("\nValue of 26 expressed in base 26:")
+print(baseConverter(26, 26))
+
+
+
+
+
+
+
